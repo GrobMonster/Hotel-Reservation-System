@@ -27,23 +27,23 @@ class RoomInformation{
         }
 
         //Getters and Setters
-        setRoomNumber(RoomInformation room){
+        void setRoomNumber(int roomNumber){
             this.roomNumber = roomNumber;
         }
 
-        setNumOfBeds(RoomInformation room){
+        void setNumOfBeds(int numOfBeds){
             this.numOfBeds = numOfBeds;
         }
         
-        setIsSuite(RoomInformation room){
+        void setIsSuite(boolean isSuite){
             this.isSuite = isSuite;
         }
     
-        setIsRoomAvailable(RoomInformation room){
+        void setIsRoomAvailable(boolean isRoomAvailable){
             this.isRoomAvailable = isRoomAvailable;
         }
         
-        setCustomersRoom(RoomInformation room){
+        void setCustomersRoom(String customersRoom){
             this.customersRoom = customersRoom;
         }
         
