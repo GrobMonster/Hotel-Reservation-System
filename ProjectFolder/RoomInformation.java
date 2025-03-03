@@ -67,8 +67,5 @@ class RoomInformation{
             return this.customersRoom;
         }
         //Methods
-        void addRoom(RoomInformation room, HotelReservation rooms){
-            rooms.add(room);
-        }
-        void updateRoom(HotelReservation rooms){
+        
             
