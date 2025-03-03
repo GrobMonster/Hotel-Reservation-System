@@ -5,10 +5,6 @@ Created by: Cody Sandford & Wyatt Brusseau
 */
 
 public class HotelReservation(String[] args){
-    class RoomInformation{
-
-    }
-
     class CustomerInformation{
 
     }
