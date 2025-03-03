@@ -11,7 +11,7 @@ class RoomInformation{
         String customersRoom
 
         //Constructors
-        RoomInformation(int roomNumber, int numOfBeds, boolean isSuite, boolean isRoomAvailable){
+        RoomInformation(int roomNumber, int numOfBeds, boolean isSuite, boolean isRoomAvailable, String customersRoom){
             this.roomNumber = roomNumber;
             this.numOfBeds = numOfBeds;
             this.isSuite = isSuite;
@@ -66,6 +66,6 @@ class RoomInformation{
         String getCustomersRoom(RoomInformation room){
             return this.customersRoom;
         }
-        //Methods
+
         
             
