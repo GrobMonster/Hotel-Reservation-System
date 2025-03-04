@@ -4,27 +4,29 @@ Created by: Cody Sandford & Wyatt Brusseau
 
 */
 
-public class RoomManager(String[] args){
+public class RoomManager{
     private ArrayList<RoomInformation> listOfRooms;
 
-    RoomList(RoomInformation){
-        this.listOfRooms = new ArrayList<RoomInformation>;
+    RoomManager(RoomInformation){
+        this.listOfRooms = new ArrayList<>;
     }
 
     ArrayList<RoomInformation> getListOfRooms(){
-        return this.listOfRooms
+        return this.listOfRooms;
     }
 
-    addRoom(RoomInformation room){
+    void addRoom(RoomInformation room){
         listOfRooms.add(room);
     }
-    updateRoom(RoomInformation room, ArrayList<RoomInformation>, listOfRooms){
-        for (i=0; i < (listOfRooms.length); i++){
-            if listOfRooms[i].RoomInformation.getRoomNumber == room.RoomInformation.getRoomNumber){
-                listOfRooms[i] = room;
+    updateRoom(RoomInformation room){
+        for (int i=0; i < (listOfRooms.length); i++){
+            if listOfRooms.get(i).getRoomNumber() == room.getRoomNumber){
+                listOfRooms.set(i, room);
                 return true
             }
-            //else{
+            else{
+                return false
+            }
                 
         }
     }
