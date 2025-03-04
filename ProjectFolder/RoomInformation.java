@@ -8,7 +8,7 @@ class RoomInformation{
         int numOfBeds;
         boolean isSuite;
         boolean isRoomAvailable;
-        String customersRoom
+        String customersRoom;
 
         //Constructors
         RoomInformation(int roomNumber, int numOfBeds, boolean isSuite, boolean isRoomAvailable, String customersRoom){
