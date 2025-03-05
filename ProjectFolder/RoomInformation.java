@@ -47,23 +47,23 @@ class RoomInformation{
             this.customersRoom = customersRoom;
         }
         
-        int getRoomNumber(RoomInformation room){
+        int getRoomNumber(){
             return this.roomNumber;
         }
 
-        int getNumOfBeds(RoomInformation room){
+        int getNumOfBeds(){
             return this.numOfBeds;
         }
         
-        boolean getIsSuite(RoomInformation room){
+        boolean getIsSuite(){
             return this.isSuite;
         }
     
-        boolean getIsRoomAvailable(RoomInformation room){
+        boolean getIsRoomAvailable(){
             this.isRoomAvailable = isRoomAvailable;
         }
         
-        String getCustomersRoom(RoomInformation room){
+        String getCustomersRoom(){
             return this.customersRoom;
         }
 
