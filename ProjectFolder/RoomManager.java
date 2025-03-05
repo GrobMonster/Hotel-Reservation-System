@@ -20,8 +20,8 @@ public class RoomManager{
         listOfRooms.add(room);
     }
     boolean updateRoom(RoomInformation room){
-        for (int i=0; i < (listOfRooms.length); i++){
-            if listOfRooms.get(i).getRoomNumber() == room.getRoomNumber){
+        for (int i=0; i < (listOfRooms.size()); i++){
+            if listOfRooms.get(i).getRoomNumber() == room.getRoomNumber()){
                 listOfRooms.set(i, room);
                 return true;
             }
@@ -32,9 +32,9 @@ public class RoomManager{
     }
 
     RoomInformation searchAvailableRooms(RoomInformation room){
-        for (int i=0; i < listOfRooms.length; i++){
+        for (int i=0; i < listOfRooms.size(); i++){
             if (listOfRooms.get(i).getIsRoomAvailable() == true){
-                return listOfRooms[i];
+                return listOfRooms.get(i);
             }
             else{
                 return null;
