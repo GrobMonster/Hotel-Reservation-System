@@ -18,6 +18,7 @@ class RoomInformation{
             this.isRoomAvailable = isRoomAvailable;
             this.customersRoom = customersRoom;
         }
+
         RoomInformation(){
             this.roomNumber = 0;
             this.numOfBeds = 0;
@@ -43,8 +44,8 @@ class RoomInformation{
             this.isRoomAvailable = isRoomAvailable;
         }
         
-        void setCustomersRoom(String customersRoom){
-            this.customersRoom = customersRoom;
+        void setCustomersRoom(CustomerInformation customer){
+            this.customersRoom = customer.getFullName();
         }
         
         int getRoomNumber(){
@@ -66,6 +67,6 @@ class RoomInformation{
         String getCustomersRoom(){
             return this.customersRoom;
         }
-
+}
         
             
