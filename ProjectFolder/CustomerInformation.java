@@ -48,26 +48,28 @@ class CustomerInformation{
     this.isCheckedIn = isCheckedIn;
   }
   
-  String getFirstName (customerInformation customer){
+  String getFirstName (){
     return this.firstName;
   }
 
-  String getLastName (customerInformation customer){
+  String getLastName (){
     return this.lastName;
   }
 
-  String getPhoneNumber (customerInformation customer){
+  String getPhoneNumber (){
     return this.phoneNumber;
   }
 
-  String getLicenseID (customerInformation customer){
+  String getLicenseID (){
     return this.LicenseID;
   }
 
-  boolean getIsCheckedIn (customerInformation customer){
+  boolean getIsCheckedIn (){
     return this.isCheckedIn;
   }
-
+  String getFullName(){
+    return firstName + " " + lastName;
+  }
 }
 
 
