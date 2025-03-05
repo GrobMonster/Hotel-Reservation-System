@@ -1,8 +1,9 @@
 /*
 Created by Cody Sandford & Wyatt Brusseau
 CustomerInformation class for HotelReservation
+This code is done, methods for adding, updating, searching, and deleting will be done in the CustomerManager File
 */
-class customerInformation{
+class CustomerInformation{
   String firstName;
   String lastName;
   String phoneNumber;
@@ -10,7 +11,7 @@ class customerInformation{
   boolean isCheckedIn;
 
   //Constructors
-  customerInformation (String firstName, String lastName, String phoneNumber, String LicenseID, boolean isCheckedIn){
+  CustomerInformation (String firstName, String lastName, String phoneNumber, String LicenseID, boolean isCheckedIn){
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
@@ -18,7 +19,7 @@ class customerInformation{
     this.isCheckedIn = isCheckedIn;
   }
   
-  customerInformation(){
+  CustomerInformation(){
     this.firstName = "Cody";
     this.lastName = "Sandford";
     this.phoneNumber = "21868687445";
