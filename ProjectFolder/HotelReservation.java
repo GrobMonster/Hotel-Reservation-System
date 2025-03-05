@@ -2,9 +2,8 @@
 Main Program
 Created by Cody Sandford & Wyatt Brusseau
 This program will use the other classes in the package to give a central interface for the hotel worker
-
-
 variables have same name as each classes variables i.e roomNumber for roomInformation is used as roomNumber here
+This is not fully done. Still needs to be set up for all the methods and tests
 */
 import java.util.Scanner;
 
@@ -27,10 +26,10 @@ public class HotelReservation{
         System.out.println("3. Delete Room");
         System.out.println("4. Find Available Room");
         int roomdecision = keyboard.nextInt();
-/*
+
         while (roomdecision != 0){
             if (roomdecision == 1)
-                */
+                System.out.println("What is the Room number that you want to add?");
         }
         
         System.out.println("Ran roomInformationTest");
