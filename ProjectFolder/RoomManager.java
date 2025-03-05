@@ -2,6 +2,7 @@
 Hotel Reservation System
 Created by: Cody Sandford & Wyatt Brusseau
 
+This code is not fully done. Still need a delete room method and figure out if we want a file that holds all rooms so it does get lost everytime we run program.
 */
 
 public class RoomManager{
@@ -18,7 +19,7 @@ public class RoomManager{
     void addRoom(RoomInformation room){
         listOfRooms.add(room);
     }
-    updateRoom(RoomInformation room){
+    boolean updateRoom(RoomInformation room){
         for (int i=0; i < (listOfRooms.length); i++){
             if listOfRooms.get(i).getRoomNumber() == room.getRoomNumber){
                 listOfRooms.set(i, room);
@@ -26,8 +27,19 @@ public class RoomManager{
             }
             else{
                 return false;
-            }
-                
+            }        
         }
     }
+
+    RoomInformation searchAvailableRooms(RoomInformation room){
+        for (int i=0; i < listOfRooms.length; i++){
+            if (listOfRooms.get(i).getIsRoomAvailable() == true){
+                return listOfRooms[i];
+            }
+            else{
+                return null;
+            }
+        }
+    }
+    
 }
