@@ -8,11 +8,11 @@ This is not fully done. Still needs to be set up for all the methods and tests
 import java.util.Scanner;
 
 public class HotelReservation{
-    static void customerInformationTest(){
+    static void useCustomerInformation(){
         System.out.println("Ran CustomerInformationTest");
     }
 
-    static void roomInformationTest(){
+    static void useRoomInformation(){
         int roomNumber;
         int numOfBeds;
         boolean isSuite;
@@ -28,16 +28,55 @@ public class HotelReservation{
         int roomdecision = keyboard.nextInt();
 
         while (roomdecision != 0){
-            if (roomdecision == 1)
-                System.out.println("What is the Room number that you want to add?");
+            if (roomdecision == 1){
+                System.out.println("What is the room number that you want to add?");
+                roomNumber = keyboard.nextInt();
+                System.out.println("How many beds does the room have?");
+                numOfBeds = keyboard.nextInt();
+                System.out.println("Is this room a suite?(give yes / no answer)");
+                String answerToQue = keyboard.nextLine();
+                if (answerToQue.equalsIgnoreCase("yes")){
+                    isSuite = true;
+                }
+                else{
+                    isSuite = false;
+                }
+                System.out.println("Is the room currently available?(give yes / no answer)");
+                String answerToQue2 = keyboard.nextLine();
+                if (answerToQue2.equalsIgnoreCase("yes")){
+                    isRoomAvailable = true;
+                }
+                else{
+                    isRoomAvailable = false;
+                }
+                System.out.println("Is there a customer booked to this room?(give yes / no answer)");
+                String answerToQue3 = keyboard.nextLine();
+                if (answerToQue3.equalsIgnoreCase("yes"){
+                    System.out.println("What is customers first name?");
+                    String tempFirstName = keyboard.nextLine();
+                    System.out.println("What is customers last name?");
+                    String tempLastName = keyboard.nextLine();
+                    customer = CustomerInformation(firstName, lastName);
+                    customersRoom = customer.getFullName();
+                else{
+                    customersRoom = "N/A";
+                }
+                room = RoomInformation(roomNumber, numOfBeds, isSuite, isRoomAvailable, customersRoom);
+                addRoom(room);
+            }    
+            if (roomdecision == 2){
+                System.out.println("What is the room number that you want to update?");
+                roomNumber = keyboard.nextInt();
+                
+
+            }
+        //End of While loop    
         }
-        
-        System.out.println("Ran roomInformationTest");
     }
-    static void invoiceInformationTest(){
+    static void useInvoiceInformation(){
         System.out.println("Ran invoiceInformationTest");
     }
-    static void reservationInformationTest(){
+    static void useReservationInformation(){
         System.out.println("Ran reservationInformationTest");
     }
 
@@ -53,16 +92,16 @@ public class HotelReservation{
 
         while (decision != 0){
             if (decision == 1){
-                roomInformationTest();
+                useRoomInformation();
             }
             else if (decision == 2){
-                customerInformationTest();
+                useCustomerInformation();
             }
             else if (decision == 3){
-                invoiceInformationTest();
+                useInvoiceInformationTest();
             }
             else if(decision == 4){
-                reservationInformationTest();
+                useReservationInformationTest();
             }
             else{
                 System.out.println("\nInvalid number please enter a number given\n");
