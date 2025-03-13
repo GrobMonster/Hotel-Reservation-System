@@ -19,6 +19,11 @@ public class RoomManager{
     void addRoom(RoomInformation room){
         listOfRooms.add(room);
     }
+    
+    boolean deleteRoom(int roomNumber) {
+    return listOfRooms.removeIf(room -> room.getRoomNumber() == roomNumber);
+    }
+    
     boolean updateRoom(RoomInformation room){
         for (int i=0; i < (listOfRooms.size()); i++){
             if listOfRooms.get(i).getRoomNumber() == room.getRoomNumber()){
