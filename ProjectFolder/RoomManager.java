@@ -25,26 +25,31 @@ public class RoomManager{
     }
     
     boolean updateRoom(RoomInformation room){
-        for (int i=0; i < (listOfRooms.size()); i++){
-            if listOfRooms.get(i).getRoomNumber() == room.getRoomNumber()){
-                listOfRooms.set(i, room);
+        for (RoomInformation room : listOfRooms){
+            if listOfRooms.get(room).getRoomNumber() == room.getRoomNumber()){
+                listOfRooms.set(room, room);
                 return true;
             }
-            else{
-                return false;
-            }        
         }
+        return false;        
     }
-
-    RoomInformation searchAvailableRooms(RoomInformation room){
-        for (int i=0; i < listOfRooms.size(); i++){
-            if (listOfRooms.get(i).getIsRoomAvailable() == true){
-                return listOfRooms.get(i);
-            }
-            else{
-                return null;
+    // Method to check for all available rooms
+    List<RoomInformation> searchAvailableRooms() {
+        List<RoomInformation> availableRooms = new ArrayList<>();
+        for (RoomInformation room : listOfRooms) {
+            if (room.getIsRoomAvailable()) {
+                availableRooms.add(room);
             }
         }
+        return availableRooms;
     }
-    
+    // Searches for a specific room number
+    RoomInformation searchRooms(int roomNumber) {
+        for (RoomInformation room : listOfRooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                return room;
+            }
+        }
+        return null;
+    }
 }
