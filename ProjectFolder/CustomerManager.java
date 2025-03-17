@@ -18,7 +18,7 @@ public class CustomerManager {
         this.scanner = new Scanner(System.in);
     }
 
-    //Another Constructor
+    //Add customer
     public void addCustomer(){
         System.out.println ("Enter first name: ");
         String firstName = scanner.nextLine();
@@ -57,6 +57,7 @@ public class CustomerManager {
         return null;
     }
 
+    //update customer information
     public void updateCustomer(){
         System.out.println ("Enter the License ID of the customer to update: ");
         String licenseID = scanner.nextLine();
