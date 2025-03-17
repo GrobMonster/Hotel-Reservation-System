@@ -26,7 +26,7 @@ public class RoomManager {
         System.out.println("Enter room number:");
         tempRoomNumber = keyboard.nextInt();
 
-        if (searchRooms(tempRoomNumber) == null) { // Fix: Correct condition
+        if (searchRooms(tempRoomNumber) == null) {
             keyboard.nextLine();
             System.out.println("Enter number of beds:");
             tempNumOfBeds = keyboard.nextInt();
@@ -62,14 +62,14 @@ public class RoomManager {
         keyboard.nextLine();
         RoomInformation deletedRoom = searchRooms(tempRoomNumber);
 
-        if (deletedRoom != null) { // Fix: Corrected variable name
+        if (deletedRoom != null) { 
             listOfRooms.remove(deletedRoom);
             System.out.println("Room successfully deleted.");
         } else {
             System.out.println("Room not found.");
         }
     }
-
+    //Update certain aspect of room. i.e. room number, number of beds, room availability.
     void updateRoom() {
         System.out.println("Enter the room number to update:");
         tempRoomNumber = keyboard.nextInt();
@@ -85,7 +85,7 @@ public class RoomManager {
             int updateChoice = keyboard.nextInt();
             keyboard.nextLine();
 
-            while (updateChoice == 1 || updateChoice == 2 || updateChoice == 3) { // Fix: Corrected variable name
+            while (updateChoice == 1 || updateChoice == 2 || updateChoice == 3) { 
                 if (updateChoice == 1) {
                     System.out.println("Enter new room number:");
                     tempRoomNumber = keyboard.nextInt();
