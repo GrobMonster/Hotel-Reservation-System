@@ -107,4 +107,19 @@ public class CustomerManager {
             System.out.println ("Customer not found");
         }
     }
+
+    // Display all customers
+    public void displayCustomers(){
+        if (customers.isEmpty()){
+            System.out.println("No customers found");
+            return;
+        }
+        for (CustomerInformation customer : customers) {
+            System.out.println("\nCustomer Details:");
+            System.out.println("Name: " + customer.getFullName());
+            System.out.println("Phone: " + customer.getPhoneNumber());
+            System.out.println("License ID: " + customer.getLicenseID());
+            System.out.println("Checked In: " + (customer.getIsCheckedIn() ? "Yes" : "No"));
+    }
+    }
 }
