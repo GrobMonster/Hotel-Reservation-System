@@ -113,3 +113,41 @@ public class HotelReservation{
       
     }
 }
+
+//Not sure where to put this
+static void useCustomerInformation() {
+    Scanner keyboard = new Scanner (System.in);
+    int customerDecision = 1;
+
+    while (customerDecision != 0){
+    System.out.println ("\n\nWhat would you like to do with Customer Information? (Enter corresponding number, enter 0 to quit)");
+    System.out.println ("1. Add Customer");
+    System.out.println ("2. Update Customer Information");
+    System.out.println ("3. Delete Customer");
+    System.out.println ("4. Search for Customer");
+    System.out.println ("5. Show all customers");
+    int customerDecision = keyboard.nextInt();
+    keyboard.nextLine();
+
+    if (customerDecision == 1){
+        CustomerManager.addCustomer();
+    }
+
+    else if (customerDecision == 2){
+        CustomerManager.updateCustomer();
+    }
+
+    else if (customerDecision == 3){
+        CustomerManager.deleteCustomer();
+    }
+
+    else if (customerDecision == 4){
+        CustomerManager.searchCustomer();
+    }
+
+    else if (customerDecision == 5){
+        CustomerManager.displayCustomers();
+    }
+    }
+
+}
