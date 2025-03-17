@@ -1,5 +1,7 @@
 /* 
 Hotel Reservation System
+Room Manager
+Work with the rooms to add, update, delete, and show available rooms and all rooms
 Created by: Cody Sandford & Wyatt Brusseau
 This code is done
 */
