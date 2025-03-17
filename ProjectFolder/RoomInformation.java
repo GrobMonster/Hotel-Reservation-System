@@ -61,11 +61,15 @@ class RoomInformation{
         }
     
         boolean getIsRoomAvailable(){
-            this.isRoomAvailable = isRoomAvailable;
+            return this.isRoomAvailable;
         }
         
         String getCustomersRoom(){
             return this.customersRoom;
+        }
+
+        public String toString() {
+            return "Room Number: " + roomNumber + "\nNumber of Beds: " + numOfBeds + "\nSuite: " + (isSuite ? "Yes" : "No") + "\nAvailable: " + (isRoomAvailable ? "Yes" : "No") + "\nCustomers Name in Room: " + customersRoom + "\n";
         }
 }
         
