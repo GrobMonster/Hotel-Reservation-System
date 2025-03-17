@@ -1,8 +1,7 @@
 /* 
 Hotel Reservation System
 Created by: Cody Sandford & Wyatt Brusseau
-
-This code is not fully done. Still need a delete room method and figure out if we want a file that holds all rooms so it doesn't get lost after everytime we run program.
+This code is done
 */
 import java.util.ArrayList;
 import java.util.Scanner;
