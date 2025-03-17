@@ -71,6 +71,10 @@ class CustomerInformation{
     return firstName + " " + lastName;
   }
 }
+public static void main (String[] args){
+  CustomerInformation customer1 = new CustomerInformation ("Cody", "Sandford", 2186867445, 123456789, true);
+  System.out.println("Customer Information\n" + "Customer Name: " + customer1.firstName + " " + customer1.lastName + "\nCustomer Phone Number: " + customer1.phoneNumber + "\nCustomer License ID: " + customer1.LicenseID +"\nThe customer is checked in: " + customer1.isCheckedIn); 
+}
 
 
 
