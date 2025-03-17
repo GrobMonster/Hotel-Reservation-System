@@ -1,3 +1,9 @@
+/* 
+Hotel Reservation System
+Customer Manager
+Work with the customer information to add, update, delete, and show the customer's information
+Created by: Cody Sandford & Wyatt Brusseau
+*/
 import java.util.ArrayList;
 import java.util.Scanner;
 
