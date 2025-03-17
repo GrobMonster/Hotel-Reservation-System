@@ -14,161 +14,60 @@ public class HotelReservation{
     }
 
     static void useRoomInformation(){
+        Scanner keyboard = new Scanner(System.in);
         int roomNumber, numOfBeds;
         boolean isSuite, isRoomAvailable;
-        String customersRoom;
-        Scanner keyboard = new Scanner(System.in);
+        String customersRoom = "N/A";
 
-        System.out.println("\n\nWhat would you like to do with Rooms?(Enter corresponding number with your decision, enter 0 to quit)");
+        System.out.println("\n\nWhat would you like to do with Rooms? (Enter corresponding number, enter 0 to quit)");
         System.out.println("1. Add Room");
         System.out.println("2. Update Room");
         System.out.println("3. Delete Room");
         System.out.println("4. Find Available Room");
+        System.out.println("5. Show All Rooms");
         int roomDecision = keyboard.nextInt();
         keyboard.nextLine();
-        while (roomDecision != 0){
-            if (roomDecision == 1){
-                System.out.println("What is the room number that you want to add?");
-                roomNumber = keyboard.nextInt();
-                keyboard.nextLine();
-                System.out.println("How many beds does the room have?");
-                numOfBeds = keyboard.nextInt();
-                keyboard.nextLine();
-                System.out.println("Is this room a suite?(Enter yes / no answer)");
-                String answerToQue = keyboard.nextLine();
-                if (answerToQue.equalsIgnoreCase("yes")){
-                    isSuite = true;
-                }
-                else{
-                    isSuite = false;
-                }
-                System.out.println("Is the room currently available?(Enter yes / no answer)");
-                String answerToQue2 = keyboard.nextLine();
-                if (answerToQue2.equalsIgnoreCase("yes")){
-                    isRoomAvailable = true;
-                }
-                else{
-                    isRoomAvailable = false;
-                }
-                System.out.println("Is there a customer booked to this room?(Enter yes / no answer)");
-                String answerToQue3 = keyboard.nextLine();
-                if (answerToQue3.equalsIgnoreCase("yes")){
-                    System.out.println("What is customers first name?");
-                    String tempFirstName = keyboard.nextLine();
-                    System.out.println("What is customers last name?");
-                    String tempLastName = keyboard.nextLine();
-                    customer = CustomerInformation(tempfirstName, templastName);
-                    customersRoom = customer.getFullName();
-                else{
-                    customersRoom = "N/A";
-                }
-                room = new RoomInformation(roomNumber, numOfBeds, isSuite, isRoomAvailable, customersRoom);
-                addRoom(room);
-            }   
-        //END OF DECISION 1
+
+        while (roomDecision != 0) {
+            if (roomDecision == 1) { // ADD ROOM
+                roomManager.addRoom();
+            } 
+
+            else if (roomDecision == 2) { // UPDATE ROOM
+                roomManager.updateRoom();
+            } 
+
+            else if (roomDecision == 3) { // DELETE ROOM
+                roomManager.deleteRoom();
+            } 
+
+            else if (roomDecision == 4) { // FIND AVAILABLE ROOMS
+                roomManager.searchAvailableRooms();
+            }
             
-            else if (roomDecision == 2){
-                System.out.println("What is the room number that you want to update?");
-                roomNumber = keyboard.nextInt();
-                keyboard.nextLine(); //consume new line
-                roomToUpdate = searchRooms(roomNumber);
-                if (roomToUpdate != null){
-                    System.out.println("What would you like to change about the room? (Enter corresponding number with your decision, enter 0 to quit");
-                    System.out.println("1. Room Number");
-                    System.out.println("2. Number of Beds");
-                    System.out.println("3. Room Availability");
-                    System.out.println("4. Customer in room\n");
-                    int updateChoice = keyboard.nextInt();
-                    keyboard.nextLine(); //consume new line
-                    while (updateChoice != 0){
-                        if (updateChoice == 1){
-                            System.out.println("What is the new room number?");
-                            roomNumber = keyboard.nextInt();
-                            keyboard.nextLine(); //consume new line
-                        }
-                        else if (updateChoice == 2){
-                            System.out.println("What is the new number of beds?");
-                            numOfBeds = keyboard.nextInt();
-                            keyboard.nextLine(); //consume new line
-                        }
-                        else if (updateChoice == 3){
-                            System.out.println("Is room available? (Enter yes / no answer)";
-                            String isAvailable = keyboard.nextLine();
-                            if (isAvailable.equalsIgnoreCase("yes"){
-                                isRoomAvailable = true;
-                            } 
-                            else{
-                                isRoomAvaible = false;
-                                System.out.println("Is there a customer in this room? (Enter yes / no answer)");
-                                isCustomerInRoom = keyboard.nextLine();
-                                if (isCustomerInRoom.equalsIgnoreCase("yes"){
-                                    System.out.println("What is customers first name?");
-                                    String tempFirstName = keyboard.nextLine();
-                                    System.out.println("What is customers last name?");
-                                    String tempLastName = keyboard.nextLine();
-                                    customer = new CustomerInformation(firstName, lastName);
-                                    customersRoom = customer.getFullName();
-                                }
-                            }
-                        }
-                        System.out.println("Is there more you would like to change? (Enter yes / no answer)");
-                        isMoreToUpdate = keyboard.nextLine();
-                        if (isMoreToUpdate.equalsIgnoreCase("yes"){
-                            System.out.println("What would you like to change about the room? (Enter corresponding number with your decision, enter 0 to quit");
-                            System.out.println("1. Room Number");
-                            System.out.println("2. Number of Beds");
-                            System.out.println("3. Room Availability");
-                            System.out.println("4. Customer in room\n");
-                            int updateChoice = keyboardnextInt();
-                            keyboard.nextLine(); //consume new line
-                        }
-                        else{
-                            break;
-                        }
+            else if (roomDecision == 5) { //SHOW ALL ROOMS
+                ArrayList<RoomInformation> allRooms = roomManager.getListOfRooms();
+                if (allRooms.isEmpty()){
+                    System.out.println("No Rooms.");
+                }
+                else{
+                    for (RoomInformation room : allRooms){
+                        System.out.println(room);                    
                     }
-                    
-                else{
-                    System.out.println("Room with this room number does not exist.");
                 }
-                System.out.println("Room was successfully updated")
-        //END OF DECISION 2
-            else if (roomDecision == 3){
-                System.out.println("What room number is the room you want to delete?")
-                roomNumber = keyboard.nextInt();
-                keyboard.nextLine(); //consume new line
-                roomToDelete = searchRooms(roomNumber);
-                if (roomToDelete != null){
-                    deleteRoom(roomNumber);
-                }
-                else{
-                    System.out.println("Room with this room number does not exist.");
-                System.out.println("Room was successfully deleted");
             }
-        //END OF DECISION 3
-            else if (roomDecision == 4){
-                List<RoomInformation> availableRooms = roomManager.searchAvailableRooms();
 
-                if (availableRooms.isEmpty()) {
-                System.out.println("No available rooms.");
-                } 
-                else {
-                    System.out.println("\nAvailable Rooms:");
-                    for (RoomInformation room : availableRooms) {
-                    System.out.println("Room Number: " + room.getRoomNumber() + ", Beds: " + room.getNumOfBeds() + ", Suite: " + (room.isSuite() ? "Yes" : "No") + ", Customer: " + room.getCustomersRoom());
-                    }
-                }
-            }
-        //END OF DECISION 4
-        System.out.println("\n\nWhat would you like to do with Rooms?(Enter corresponding number with your decision, enter 0 to quit)");
-        System.out.println("1. Add Room");
-        System.out.println("2. Update Room");
-        System.out.println("3. Delete Room");
-        System.out.println("4. Find Available Room");
-        int roomDecision = keyboard.nextInt();
-        keyboard.nextLine();
-        //End of While loop    
+            // Prompt for next action
+            System.out.println("\n\nWhat would you like to do next? (Enter number, enter 0 to quit)");
+            System.out.println("1. Add Room");
+            System.out.println("2. Update Room");
+            System.out.println("3. Delete Room");
+            System.out.println("4. Find Available Room");
+            System.out.println("5. Show All Rooms");
+            roomDecision = keyboard.nextInt();
+            keyboard.nextLine();
         }
-     keyboard.close();
+    
     }
     static void useInvoiceInformation(){
         System.out.println("Ran invoiceInformationTest");
