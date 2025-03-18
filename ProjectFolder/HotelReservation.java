@@ -107,6 +107,42 @@ public class HotelReservation{
         System.out.println("Ran reservationInformationTest");
     }
 
+    static void useInvoiceInformation(){
+        Scanner keyboard = new Scanner (System.in);
+        int invoiceDecision = 1;
+
+        while (customerDecision != 0){
+            System.out.println ("\n\nWhat would you like to do with Invoice Information? (Enter corresponding number, enter 0 to quit)");
+            System.out.println ("1. Create Invoice");
+            System.out.println ("2. Update Invoice");
+            System.out.println ("3. Delete Invoice");
+            System.out.println ("4. Show Invoice");
+            System.out.println ("5. Show all Invoices");
+            int customerDecision = keyboard.nextInt();
+            keyboard.nextLine();
+
+            if (invoiceDecision == 1){
+                InvoiceInformation.createInvoice();
+            }
+
+            else if (invoiceDecision == 2){
+                InvoiceInformation.updateInvoice();
+            }
+
+            else if (invoiceDecision == 3){
+                InvoiceInformation.deleteInvoice();
+            }
+
+            else if (invoiceDecision == 4){
+                InvoiceInformation.showInvoice();
+            }
+
+            else if (invoiceDecision == 5){
+                InvoiceInformation.listAllInvoices();
+            }
+        }
+    }
+    
     public static void main(String[] args){
         Scanner keyboard = new Scanner(System.in);
 
