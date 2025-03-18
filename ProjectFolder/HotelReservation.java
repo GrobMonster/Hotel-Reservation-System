@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class HotelReservation{
+    
+
     static void useCustomerInformation(){
         Scanner keyboard = new Scanner (System.in);
         int customerDecision = 1;
@@ -20,26 +22,28 @@ public class HotelReservation{
             System.out.println ("3. Delete Customer");
             System.out.println ("4. Search for Customer");
             System.out.println ("5. Show all customers");
-            int customerDecision = keyboard.nextInt();
+            customerDecision = keyboard.nextInt();
             keyboard.nextLine();
 
-            if (customerDecision == 1){
+            if (customerDecision == 1){//ADD CUSTOMER
                 CustomerManager.addCustomer();
             }
 
-            else if (customerDecision == 2){
+            else if (customerDecision == 2){//UPDATE CUSTOMER
                 CustomerManager.updateCustomer();
             }
 
-            else if (customerDecision == 3){
+            else if (customerDecision == 3){//DELETE CUSTOMER
                 CustomerManager.deleteCustomer();
             }
 
-            else if (customerDecision == 4){
-                CustomerManager.searchCustomer();
+            else if (customerDecision == 4){//SHOW CUSTOMER
+                System.out.println("What is customers License ID number?");
+                String licenseID = keyboard.nextLine();
+                CustomerManager.searchCustomer(licenseID);
             }
 
-            else if (customerDecision == 5){
+            else if (customerDecision == 5){//SHOW ALL CUSTOMERS
                 CustomerManager.displayCustomers();
             }
         }
@@ -50,42 +54,33 @@ public class HotelReservation{
         int roomDecision = 1;
 
         while (roomDecision != 0) {
-            int roomDecision = keyboard.nextInt();
             System.out.println("\n\nWhat would you like to do with Rooms? (Enter corresponding number, enter 0 to quit)");
             System.out.println("1. Add Room");
             System.out.println("2. Update Room");
             System.out.println("3. Delete Room");
             System.out.println("4. Find Available Room");
             System.out.println("5. Show All Rooms");
-            int roomDecision = keyboard.nextInt();
+            roomDecision = keyboard.nextInt();
             keyboard.nextLine();
             
             if (roomDecision == 1) { // ADD ROOM
-                roomManager.addRoom();
+                RoomManager.addRoom();
             } 
 
             else if (roomDecision == 2) { // UPDATE ROOM
-                roomManager.updateRoom();
+                RoomManager.updateRoom();
             } 
 
             else if (roomDecision == 3) { // DELETE ROOM
-                roomManager.deleteRoom();
+                RoomManager.deleteRoom();
             } 
 
             else if (roomDecision == 4) { // FIND AVAILABLE ROOMS
-                roomManager.searchAvailableRooms();
+                RoomManager.searchAvailableRooms();
             }
             
             else if (roomDecision == 5) { //SHOW ALL ROOMS
-                ArrayList<RoomInformation> allRooms = roomManager.getListOfRooms();
-                if (allRooms.isEmpty()){
-                    System.out.println("No Rooms.");
-                }
-                else{
-                    for (RoomInformation room : allRooms){
-                        System.out.println(room);                    
-                    }
-                }
+                RoomManager.showAllRooms();
             }
 
             // Prompt for next action
@@ -100,7 +95,6 @@ public class HotelReservation{
         }
     
     }
-
     static void useInvoiceInformation(){
         Scanner keyboard = new Scanner (System.in);
         int invoiceDecision = 1;
@@ -111,40 +105,64 @@ public class HotelReservation{
             System.out.println ("2. Update Invoice");
             System.out.println ("3. Delete Invoice");
             System.out.println ("4. Show Invoice");
-            System.out.println ("5. Show all Invoices");
-            int customerDecision = keyboard.nextInt();
+            invoiceDecision = keyboard.nextInt();
             keyboard.nextLine();
 
-            if (invoiceDecision == 1){
+            if (invoiceDecision == 1){//CREATE INVOICE
                 InvoiceInformation.createInvoice();
             }
 
-            else if (invoiceDecision == 2){
+            else if (invoiceDecision == 2){//UPDATE INVOICE
                 InvoiceInformation.updateInvoice();
             }
 
-            else if (invoiceDecision == 3){
+            else if (invoiceDecision == 3){//DELETE INVOICE
                 InvoiceInformation.deleteInvoice();
             }
 
-            else if (invoiceDecision == 4){
+            else if (invoiceDecision == 4){//SHOW INVOICE
                 InvoiceInformation.showInvoice();
             }
+        }
 
-            else if (invoiceDecision == 5){
-                InvoiceInformation.listAllInvoices();
+    }
+    static void useReservationInformation(){
+        Scanner keyboard = new Scanner (System.in);
+        int reservationDecision = 1;
+
+        while (reservationDecision != 0){
+            System.out.println ("\n\nWhat would you like to do with Invoice Information? (Enter corresponding number, enter 0 to quit)");
+            System.out.println ("1. Create Reservation");
+            System.out.println ("2. Update Reservation");
+            System.out.println ("3. Delete Reservation");
+            System.out.println ("4. Show Reservation");
+            reservationDecision = keyboard.nextInt();
+            keyboard.nextLine();
+
+            if (reservationDecision == 1){//CREATE RESERVATION
+                ReservationManager.addReservation();
+            }
+
+            else if (reservationDecision == 2){//UPDATE RESERVATION
+                ReservationManager.updateReservation();
+            }
+
+            else if (reservationDecision == 3){//DELETE RESERVATION
+                ReservationManager.deleteReservation();
+            }
+
+            else if (reservationDecision == 4){//SHOW RESERVATION
+                System.out.println("What is customers name for reservation?");
+                String customerName = keyboard.nextLine();
+                ReservationManager.searchReservation(customerName);
             }
         }
     }
 
-    static void useReservationInformation(){
-        System.out.println("Ran reservationInformationTest");
-    }
-    
     public static void main(String[] args){
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("Hello! Welcome to the Hotel Reservation System!\n What would you like to start with? (Enter number that corresponds with your decision, enter 0 to quit)");
+        System.out.println("Hello! Welcome to the Hotel Reservation System!\nWhat would you like to start with? (Enter number that corresponds with your decision, enter 0 to quit)");
         System.out.println("1. Rooms");
         System.out.println("2. Customers"); 
         System.out.println("3. Invoice");
