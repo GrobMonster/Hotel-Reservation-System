@@ -8,18 +8,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerManager {
-    private ArrayList<CustomerInformation> customers;
-    private Scanner scanner;
-    Boolean isCheckedIn;
+    private static ArrayList<CustomerInformation> customers;
+    private static Scanner scanner = new Scanner(System.in);
 
     //Constructor
     public CustomerManager() {
         this.customers = new ArrayList<>();
-        this.scanner = new Scanner(System.in);
     }
 
     //Add customer
-    public void addCustomer(){
+    public static void addCustomer(){
+        
         System.out.println ("Enter first name: ");
         String firstName = scanner.nextLine();
         System.out.println ("Enter last name: ");
@@ -30,12 +29,7 @@ public class CustomerManager {
         String licenseID = scanner.nextLine();
         System.out.println ("Has customer checked in? (Enter y or n)");
         String checkedIn = scanner.nextLine();
-        if (checkedIn == "y"){
-            isCheckedIn = true;
-        }
-        else{
-            isCheckedIn = false;
-        }
+        boolean isCheckedIn = checkedIn.equalsIgnoreCase("y");
 
         CustomerInformation newCustomer = new CustomerInformation(firstName, lastName, phoneNumber, licenseID, isCheckedIn);
         customers.add(newCustomer);
@@ -43,7 +37,7 @@ public class CustomerManager {
     }
 
     //search for customer
-    public CustomerInformation searchCustomer(String licenseID){
+    public static CustomerInformation searchCustomer(String licenseID){
         for (CustomerInformation customer : customers){
             if (customer.getLicenseID().equals(licenseID)){
                 System.out.println("Would you like to see the customer's information? (Enter y or n)");
@@ -58,7 +52,7 @@ public class CustomerManager {
     }
 
     //update customer information
-    public void updateCustomer(){
+    public static void updateCustomer(){
         System.out.println ("Enter the License ID of the customer to update: ");
         String licenseID = scanner.nextLine();
         CustomerInformation customer = searchCustomer(licenseID);
@@ -80,12 +74,7 @@ public class CustomerManager {
 
             System.out.println ("Has customer checked in? (Enter y or n)");
         String checkedIn = scanner.nextLine();
-        if (checkedIn == "y"){
-            isCheckedIn = true;
-        }
-        else{
-            isCheckedIn = false;
-        }
+        boolean isCheckedIn = checkedIn.equalsIgnoreCase("y");
 
             System.out.println("Customer information updated successfully");
         }
@@ -95,7 +84,7 @@ public class CustomerManager {
     }
 
     //Delete customer
-    public void deleteCustomer(){
+    public static void deleteCustomer(){
         System.out.println("Enter the License ID of the customer to delete: ");
         String licenseID = scanner.nextLine();
         CustomerInformation customer = searchCustomer(licenseID);
@@ -110,7 +99,7 @@ public class CustomerManager {
     }
 
     // Display all customers
-    public void displayCustomers(){
+    public static void displayCustomers(){
         if (customers.isEmpty()){
             System.out.println("No customers found");
             return;
@@ -118,6 +107,6 @@ public class CustomerManager {
         for (CustomerInformation customer : customers) {
             System.out.println("\nCustomer Details:");
             System.out.println(customer);
-    }
+        }
     }
 }
