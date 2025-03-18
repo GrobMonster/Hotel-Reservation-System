@@ -70,14 +70,44 @@ public class ReservationManager{
                     System.out.println("How many nights are they now staying?")
                     numOfNights = keyboard.nextInt();
                     keyboard.nextLine();
+                    reservationToUpdate.setNumOfNights(numOfNights);
                 }
+                else if{
+                    System.out.println("How many rooms does the customer want to book?");
+                    int numOfRooms = keyboard.nextInt();
+                    keyboard.nextLine();
+                    for (int i = 0; i < numOfRooms; i++){
+                        System.out.println("What room does the customer want to book?");
+                        int roomNumberCustomerBooked = keyboard.nextInt();
+                        keyboard.nextLine(); //eats new line
+                        RoomInformation roomToBook = searchRooms(roomNumberCustomerBooked);
+                        if (roomToBook != null){
+                            roomToBook.setIsRoomAvailable(false);
+                            roomToBook.setCustomerName(customersName);
+                        }
+                        else{
+                            System.out.println("Room not found");
+                        }
+                    }
+                }    
             }
-            
+        }
+        else{
+            System.out.println("Reservation for customer not found.");
         }
     }
 
     void deleteReservation(){
+        System.out.print("Enter the Customers Name to delete reservation:");
+        customerName = keyboard.nextLine();
+        ReservationInformation deletedReservation = searchReservation(customerName);
 
+        if (deletedReservation != null) { 
+            listOfReservations.remove(deletedReservation);
+            System.out.println("Room successfully deleted.");
+        } else {
+            System.out.println("Room not found.");
+        }
     }
 
     ReservationInformation searchReservation(String customerName){
