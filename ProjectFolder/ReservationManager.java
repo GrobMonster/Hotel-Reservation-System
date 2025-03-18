@@ -7,12 +7,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class ReservationManager{
-    private ArrayList<ReservationInformation> listOfReservations;
-    private Scanner keyboard = new Scanner(System.in);
-    static int pricePerNight = 150, 
-    private int numOfNights;
-    ArrayList<Integer> customerRoomNumbers;
-    String customerName;
+    private static ArrayList<ReservationInformation> listOfReservations;
+    private static Scanner keyboard = new Scanner(System.in);
+    static final int pricePerNight = 150;
     
     //Constructor
     ReservationManager(){
@@ -23,14 +20,15 @@ public class ReservationManager{
         return this.listOfReservations;
     }
 
-    void addReservation(){
+    //Method to add reservation
+    public static void addReservation(){
         System.out.println("Enter Customers License ID");
         String licenseID = keyboard.nextLine();
-        CustomerInformation customer = searchCustomer(licenseID);
-        customerName = customer.getFullName();
-        if (searchReservation(customersName) == null){
+        CustomerInformation customer = CustomerManager.searchCustomer(licenseID);
+        String customerName = customer.getFullName();
+        if (searchReservation(customerName) == null){
             System.out.println("How many nights will the customer be staying?");
-            numOfNights = keyboard.nextInt();
+            int numOfNights = keyboard.nextInt();
             keyboard.nextLine(); //eats new line
             System.out.println("How many rooms does the customer want to book?");
             int numOfRooms = keyboard.nextInt();
@@ -39,10 +37,10 @@ public class ReservationManager{
                 System.out.println("What room does the customer want to book?");
                 int roomNumberCustomerBooked = keyboard.nextInt();
                 keyboard.nextLine(); //eats new line
-                RoomInformation roomToBook = searchRooms(roomNumberCustomerBooked);
+                RoomInformation roomToBook = RoomManager.searchRooms(roomNumberCustomerBooked);
                 if (roomToBook != null){
                     roomToBook.setIsRoomAvailable(false);
-                    roomToBook.setCustomerName(customersName);
+                    roomToBook.setCustomersRoom(customerName);
                 }
                 else{
                     System.out.println("Room not found");
@@ -54,25 +52,26 @@ public class ReservationManager{
         }
     }
 
-    void updateReservation(){
+    //Method to update reservation
+    public static void updateReservation(){
         System.out.println("Who's Reservation do you want to update?");
-        customersReservationToUpdate = keyboard.nextLine();
+        String customersReservationToUpdate = keyboard.nextLine();
         ReservationInformation reservationToUpdate = searchReservation(customersReservationToUpdate);
         if (reservationToUpdate != null){
-            System.out.println("What would you like to change? (Enter "0" to quit)");
+            System.out.println("What would you like to change? (Enter '0' to quit)");
             System.out.println("1. Number of Nights");
             System.out.println("2. Rooms booked");
-            updateDecision = keyboard.nextInt();
+            int updateDecision = keyboard.nextInt();
             keyboard.nextLine();
 
             while(updateDecision != 0){
                 if (updateDecision == 1){
-                    System.out.println("How many nights are they now staying?")
-                    numOfNights = keyboard.nextInt();
+                    System.out.println("How many nights are they now staying?");
+                    int numOfNights = keyboard.nextInt();
                     keyboard.nextLine();
                     reservationToUpdate.setNumOfNights(numOfNights);
                 }
-                else if{
+                else if (updateDecision == 1){
                     System.out.println("How many rooms does the customer want to book?");
                     int numOfRooms = keyboard.nextInt();
                     keyboard.nextLine();
@@ -80,10 +79,10 @@ public class ReservationManager{
                         System.out.println("What room does the customer want to book?");
                         int roomNumberCustomerBooked = keyboard.nextInt();
                         keyboard.nextLine(); //eats new line
-                        RoomInformation roomToBook = searchRooms(roomNumberCustomerBooked);
+                        RoomInformation roomToBook = RoomManager.searchRooms(roomNumberCustomerBooked);
                         if (roomToBook != null){
                             roomToBook.setIsRoomAvailable(false);
-                            roomToBook.setCustomerName(customersName);
+                            roomToBook.setCustomersRoom(customersReservationToUpdate);
                         }
                         else{
                             System.out.println("Room not found");
@@ -97,9 +96,10 @@ public class ReservationManager{
         }
     }
 
-    void deleteReservation(){
+    //Method to delete reservation
+    public static void deleteReservation(){
         System.out.print("Enter the Customers Name to delete reservation:");
-        customerName = keyboard.nextLine();
+        String customerName = keyboard.nextLine();
         ReservationInformation deletedReservation = searchReservation(customerName);
 
         if (deletedReservation != null) { 
@@ -110,13 +110,13 @@ public class ReservationManager{
         }
     }
 
-    ReservationInformation searchReservation(String customerName){
+    //Method to search reservation
+    public static ReservationInformation searchReservation(String customerName){
         for (ReservationInformation reservation : listOfReservations){
-            if (reservation.getCustomerName().equalsIgnoreCase(customerName){
+            if (reservation.getCustomerName().equalsIgnoreCase(customerName)){
                 return reservation;
             }
         }
         return null;
     }
 }
-
