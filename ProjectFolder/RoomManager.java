@@ -32,14 +32,14 @@ public class RoomManager {
             System.out.println("Enter number of beds:");
             tempNumOfBeds = keyboard.nextInt();
             keyboard.nextLine();
-            System.out.println("Is this room a suite? (yes/no)");
-            tempIsSuite = keyboard.nextLine().equalsIgnoreCase("yes");
-            System.out.println("Is the room available? (yes/no)");
-            tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("yes");
+            System.out.println("Is this room a suite? (Enter y or n)");
+            tempIsSuite = keyboard.nextLine().equalsIgnoreCase("y");
+            System.out.println("Is the room available? (Enter y or n)");
+            tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("y");
 
             if (!tempIsRoomAvailable) {
-                System.out.println("Is there a customer booked to this room? (yes/no)");
-                if (keyboard.nextLine().equalsIgnoreCase("yes")) {
+                System.out.println("Is there a customer booked to this room? (Enter y or n)");
+                if (keyboard.nextLine().equalsIgnoreCase("y")) {
                     System.out.println("Enter customer's first name:");
                     String firstName = keyboard.nextLine();
                     System.out.println("Enter customer's last name:");
@@ -89,7 +89,7 @@ public class RoomManager {
             while (updateChoice == 1 || updateChoice == 2 || updateChoice == 3) { 
                 if (updateChoice == 1) {
                     System.out.println("Enter new room number:");
-                    tempRoomNumber = keyboard.nextInt();
+                    if (tempRoomNumber = keyboard.nextInt();
                     keyboard.nextLine();
                     roomToUpdate.setRoomNumber(tempRoomNumber);
                 } 
@@ -100,13 +100,13 @@ public class RoomManager {
                     roomToUpdate.setNumOfBeds(tempNumOfBeds);
                 } 
                 else if (updateChoice == 3) {
-                    System.out.println("Is room available? (yes/no)");
-                    tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("yes");
+                    System.out.println("Is room available? (Enter y  or n)");
+                    tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("y");
                     roomToUpdate.setIsRoomAvailable(tempIsRoomAvailable);
 
                     if (!tempIsRoomAvailable) {
-                        System.out.println("Is there a customer in this room? (yes/no)");
-                        if (keyboard.nextLine().equalsIgnoreCase("yes")) {
+                        System.out.println("Is there a customer in this room? (Enter y or n)");
+                        if (keyboard.nextLine().equalsIgnoreCase("y")) {
                             System.out.println("Enter customer's first name:");
                             String firstName = keyboard.nextLine();
                             System.out.println("Enter customer's last name:");
@@ -122,8 +122,8 @@ public class RoomManager {
                     
                 }
 
-                System.out.println("Would you like to make more changes? (yes/no)");
-                if (!keyboard.nextLine().equalsIgnoreCase("yes")) {
+                System.out.println("Would you like to make more changes? (Enter y or no)");
+                if (!keyboard.nextLine().equalsIgnoreCase("y")) {
                     break;
                 }
                 System.out.println("Choose what to update (0 to quit):");
@@ -186,5 +186,16 @@ public class RoomManager {
         }
         return null;
     }
-    
+
+    void showAllRooms(){
+        ArrayList<RoomInformation> allRooms = roomManager.getListOfRooms();
+        if (allRooms.isEmpty()){
+            System.out.println("No Rooms.");
+        }
+        else{
+            for (RoomInformation room : allRooms){
+                System.out.println(room);                    
+            }
+        }
+    }
 }
