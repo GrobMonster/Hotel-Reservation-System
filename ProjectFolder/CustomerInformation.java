@@ -7,15 +7,15 @@ class CustomerInformation{
   String firstName;
   String lastName;
   String phoneNumber;
-  String LicenseID;
+  String licenseID;
   boolean isCheckedIn;
 
   //Constructors
-  CustomerInformation (String firstName, String lastName, String phoneNumber, String LicenseID, boolean isCheckedIn){
+  CustomerInformation (String firstName, String lastName, String phoneNumber, String licenseID, boolean isCheckedIn){
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
-    this.LicenseID = LicenseID;
+    this.licenseID = licenseID;
     this.isCheckedIn = isCheckedIn;
   }
   
@@ -23,7 +23,7 @@ class CustomerInformation{
     this.firstName = "Cody";
     this.lastName = "Sandford";
     this.phoneNumber = "21868687445";
-    this.LicenseID = "123456789";
+    this.licenseID = "123456789";
     this.isCheckedIn = false;
   }
   
@@ -40,8 +40,8 @@ class CustomerInformation{
     this.phoneNumber = phoneNumber;
   }
   
-  void setLicenseID (String LicenseID){
-    this.LicenseID = LicenseID;
+  void setLicenseID (String licenseID){
+    this.licenseID = licenseID;
   }
   
   void setIsCheckedIn (boolean isCheckedIn){
@@ -61,7 +61,7 @@ class CustomerInformation{
   }
 
   String getLicenseID (){
-    return this.LicenseID;
+    return this.licenseID;
   }
 
   boolean getIsCheckedIn (){
@@ -70,11 +70,11 @@ class CustomerInformation{
   String getFullName(){
     return firstName + " " + lastName;
   }
+  public String toString(){
+    return "Customer Name: " + firstName + " " + lastName + "\nPhone Number: " + phoneNumber + "\nLicense Number: " + licenseID + "\nChecked In: " + (isCheckedIn ? "Yes" : "No");
+  }
 }
-public static void main (String[] args){
-  CustomerInformation customer1 = new CustomerInformation ("Cody", "Sandford", 2186867445, 123456789, true);
-  System.out.println("Customer Information\n" + "Customer Name: " + customer1.firstName + " " + customer1.lastName + "\nCustomer Phone Number: " + customer1.phoneNumber + "\nCustomer License ID: " + customer1.LicenseID +"\nThe customer is checked in: " + customer1.isCheckedIn); 
-}
+
 
 
 
