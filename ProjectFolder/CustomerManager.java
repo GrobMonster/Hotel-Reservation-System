@@ -28,9 +28,9 @@ public class CustomerManager {
         String phoneNumber = scanner.nextLine();
         System.out.println ("Enter license ID: ");
         String licenseID = scanner.nextLine();
-        System.out.println ("Has customer checked in? (Enter yes or no)");
+        System.out.println ("Has customer checked in? (Enter y or n)");
         String checkedIn = scanner.nextLine();
-        if (checkedIn == "yes"){
+        if (checkedIn == "y"){
             isCheckedIn = true;
         }
         else{
@@ -117,10 +117,7 @@ public class CustomerManager {
         }
         for (CustomerInformation customer : customers) {
             System.out.println("\nCustomer Details:");
-            System.out.println("Name: " + customer.getFullName());
-            System.out.println("Phone: " + customer.getPhoneNumber());
-            System.out.println("License ID: " + customer.getLicenseID());
-            System.out.println("Checked In: " + (customer.getIsCheckedIn() ? "Yes" : "No"));
+            System.out.println(customer);
     }
     }
 }
