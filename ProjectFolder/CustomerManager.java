@@ -78,9 +78,9 @@ public class CustomerManager {
             String phoneNumber = scanner.nextLine();
             if (!phoneNumber.isBlank()) customer.setPhoneNumber(phoneNumber);
 
-            System.out.println ("Has customer checked in? (Enter yes or no)");
+            System.out.println ("Has customer checked in? (Enter y or n)");
         String checkedIn = scanner.nextLine();
-        if (checkedIn == "yes"){
+        if (checkedIn == "y"){
             isCheckedIn = true;
         }
         else{
