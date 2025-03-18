@@ -9,11 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RoomManager {
-    private ArrayList<RoomInformation> listOfRooms;
-    private Scanner keyboard = new Scanner(System.in);
-    private int tempRoomNumber, tempNumOfBeds;
-    private boolean tempIsSuite, tempIsRoomAvailable;
-    private String tempCustomersRoom = "N/A";
+    private static ArrayList<RoomInformation> listOfRooms;
+    private static Scanner keyboard = new Scanner(System.in);
 
     RoomManager() {
         this.listOfRooms = new ArrayList<>();
@@ -23,19 +20,21 @@ public class RoomManager {
         return this.listOfRooms;
     }
 
-    void addRoom() {
+    //Method to add room
+    public static void addRoom() {
+        String tempCustomersRoom = "N/A";
         System.out.println("Enter room number:");
-        tempRoomNumber = keyboard.nextInt();
+        int tempRoomNumber = keyboard.nextInt();
 
         if (searchRooms(tempRoomNumber) == null) {
             keyboard.nextLine();
             System.out.println("Enter number of beds:");
-            tempNumOfBeds = keyboard.nextInt();
+            int tempNumOfBeds = keyboard.nextInt();
             keyboard.nextLine();
             System.out.println("Is this room a suite? (Enter y or n)");
-            tempIsSuite = keyboard.nextLine().equalsIgnoreCase("y");
+            boolean tempIsSuite = keyboard.nextLine().equalsIgnoreCase("y");
             System.out.println("Is the room available? (Enter y or n)");
-            tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("y");
+            boolean tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("y");
 
             if (!tempIsRoomAvailable) {
                 System.out.println("Is there a customer booked to this room? (Enter y or n)");
@@ -44,8 +43,8 @@ public class RoomManager {
                     String firstName = keyboard.nextLine();
                     System.out.println("Enter customer's last name:");
                     String lastName = keyboard.nextLine();
-                    CustomerInformation customer = new CustomerInformation(firstName, lastName);
-                    tempCustomersRoom = customer.getFullName();
+                    tempCustomersRoom = firstName + " " + lastName;
+                    
                 }
             }
 
@@ -57,9 +56,9 @@ public class RoomManager {
         }
     }
 
-    void deleteRoom() {
+    public static void deleteRoom() {
         System.out.println("Enter the room number to delete:");
-        tempRoomNumber = keyboard.nextInt();
+        int tempRoomNumber = keyboard.nextInt();
         keyboard.nextLine();
         RoomInformation deletedRoom = searchRooms(tempRoomNumber);
 
@@ -71,9 +70,10 @@ public class RoomManager {
         }
     }
     //Update certain aspect of room. i.e. room number, number of beds, room availability.
-    void updateRoom() {
+    public static void updateRoom() {
+        String tempCustomersRoom;
         System.out.println("Enter the room number to update:");
-        tempRoomNumber = keyboard.nextInt();
+        int tempRoomNumber = keyboard.nextInt();
         keyboard.nextLine();
         RoomInformation roomToUpdate = searchRooms(tempRoomNumber);
 
@@ -89,19 +89,19 @@ public class RoomManager {
             while (updateChoice == 1 || updateChoice == 2 || updateChoice == 3) { 
                 if (updateChoice == 1) {
                     System.out.println("Enter new room number:");
-                    if (tempRoomNumber = keyboard.nextInt();
+                    tempRoomNumber = keyboard.nextInt();
                     keyboard.nextLine();
                     roomToUpdate.setRoomNumber(tempRoomNumber);
                 } 
                 else if (updateChoice == 2) {
                     System.out.println("Enter new number of beds:");
-                    tempNumOfBeds = keyboard.nextInt();
+                    int tempNumOfBeds = keyboard.nextInt();
                     keyboard.nextLine();
                     roomToUpdate.setNumOfBeds(tempNumOfBeds);
                 } 
                 else if (updateChoice == 3) {
                     System.out.println("Is room available? (Enter y  or n)");
-                    tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("y");
+                    boolean tempIsRoomAvailable = keyboard.nextLine().equalsIgnoreCase("y");
                     roomToUpdate.setIsRoomAvailable(tempIsRoomAvailable);
 
                     if (!tempIsRoomAvailable) {
@@ -111,13 +111,13 @@ public class RoomManager {
                             String firstName = keyboard.nextLine();
                             System.out.println("Enter customer's last name:");
                             String lastName = keyboard.nextLine();
-                            CustomerInformation customer = new CustomerInformation(firstName, lastName);
-                            roomToUpdate.setCustomersRoom(customer);
+                            tempCustomersRoom = firstName + " " + lastName;
+                            roomToUpdate.setCustomersRoom(tempCustomersRoom);
                         }
                     }
                     else{
-                            CustomerInformation customer = new CustomerInformation();
-                            roomToUpdate.setCustomersRoom(customer);
+                            
+                            roomToUpdate.setCustomersRoom("N/A");
                     }
                     
                 }
@@ -140,7 +140,7 @@ public class RoomManager {
     }
 
     // Method to check for all available rooms
-    ArrayList<RoomInformation> searchAvailableRooms() {
+    public static ArrayList<RoomInformation> searchAvailableRooms() {
         ArrayList<RoomInformation> availableRooms = new ArrayList<>();
         for (RoomInformation room : listOfRooms) {
             if (room.getIsRoomAvailable()) {
@@ -178,7 +178,7 @@ public class RoomManager {
     }
 
     // Searches for a specific room number
-    RoomInformation searchRooms(int roomNumber) {
+    public static RoomInformation searchRooms(int roomNumber) {
         for (RoomInformation room : listOfRooms) {
             if (room.getRoomNumber() == roomNumber) {
                 return room;
@@ -187,13 +187,12 @@ public class RoomManager {
         return null;
     }
 
-    void showAllRooms(){
-        ArrayList<RoomInformation> allRooms = roomManager.getListOfRooms();
-        if (allRooms.isEmpty()){
+    public static void showAllRooms(){
+        if (listOfRooms.isEmpty()){
             System.out.println("No Rooms.");
         }
         else{
-            for (RoomInformation room : allRooms){
+            for (RoomInformation room :listOfRooms){
                 System.out.println(room);                    
             }
         }
