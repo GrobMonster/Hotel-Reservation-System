@@ -100,18 +100,12 @@ public class HotelReservation{
         }
     
     }
-    static void useInvoiceInformation(){
-        System.out.println("Ran invoiceInformationTest");
-    }
-    static void useReservationInformation(){
-        System.out.println("Ran reservationInformationTest");
-    }
 
     static void useInvoiceInformation(){
         Scanner keyboard = new Scanner (System.in);
         int invoiceDecision = 1;
 
-        while (customerDecision != 0){
+        while (invoiceDecision != 0){
             System.out.println ("\n\nWhat would you like to do with Invoice Information? (Enter corresponding number, enter 0 to quit)");
             System.out.println ("1. Create Invoice");
             System.out.println ("2. Update Invoice");
@@ -141,6 +135,10 @@ public class HotelReservation{
                 InvoiceInformation.listAllInvoices();
             }
         }
+    }
+
+    static void useReservationInformation(){
+        System.out.println("Ran reservationInformationTest");
     }
     
     public static void main(String[] args){
