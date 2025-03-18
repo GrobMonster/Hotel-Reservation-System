@@ -28,9 +28,9 @@ public class CustomerManager {
         String phoneNumber = scanner.nextLine();
         System.out.println ("Enter license ID: ");
         String licenseID = scanner.nextLine();
-        System.out.println ("Has customer checked in? (Enter y or n)");
+        System.out.println ("Has customer checked in? (Enter yes or no)");
         String checkedIn = scanner.nextLine();
-        if (checkedIn == "y"){
+        if (checkedIn == "yes"){
             isCheckedIn = true;
         }
         else{
@@ -78,9 +78,9 @@ public class CustomerManager {
             String phoneNumber = scanner.nextLine();
             if (!phoneNumber.isBlank()) customer.setPhoneNumber(phoneNumber);
 
-            System.out.println ("Has customer checked in? (Enter y or n)");
+            System.out.println ("Has customer checked in? (Enter yes or no)");
         String checkedIn = scanner.nextLine();
-        if (checkedIn == "y"){
+        if (checkedIn == "yes"){
             isCheckedIn = true;
         }
         else{
