@@ -1,7 +1,8 @@
 /*
-RoomInformation class for Hotel Reservation
+Hotel Reservation System
+Room Information Class
 Created by: Cody Sandford and Wyatt Brusseau
-Room Information is done, some minor changes may need to be implemented
+Room Information is done
 */
 class RoomInformation{
         int roomNumber;
